@@ -1,0 +1,7 @@
+node_modules
+*.log
+*.html
+*.json
+*.md
+*.txt
+*.csv
