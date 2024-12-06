@@ -18,7 +18,7 @@ const scene = new THREE.Scene();
 
 // Create camera (similar starting point as ArcRotateCamera)
 const camera = new THREE.PerspectiveCamera(
-  75,
+  55,
   window.innerWidth / window.innerHeight,
   1,
   2000
@@ -38,7 +38,7 @@ controls.minDistance = 400;
 controls.maxDistance = 600;
 
 // Invert rotation: by default dragging left rotates left. To invert, adjust rotateSpeed:
-controls.rotateSpeed = -1; // Negative value inverts the direction of rotation
+controls.rotateSpeed = -0.5; // Negative value inverts the direction of rotation
 
 // Load the panoramic texture
 const loader = new THREE.TextureLoader();
@@ -47,16 +47,6 @@ loader.load(
   (texture) => {
     texture.wrapS = THREE.ClampToEdgeWrapping;
     texture.wrapT = THREE.ClampToEdgeWrapping;
-
-    // To simulate flipping horizontally and vertically as done by texture.uAng = Math.PI and texture.vAng = Math.PI,
-    // we can simply flip both axes by setting repeat to -1, -1.
-    texture.center.set(0.5, 0.5);
-    texture.rotation = 0; // no rotation
-    texture.repeat.set(1, 1); // no flipping
-
-    // Or, if you want a rotation approach, you can do:
-    // texture.center.set(0.5, 0.5);
-    // texture.rotation = Math.PI; // rotate by 180 degrees
 
     // Create a sphere geometry
     const geometry = new THREE.SphereGeometry(1000, 64, 64);
